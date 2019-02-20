@@ -6,8 +6,7 @@
  * @version 2019-02-13
  */
 
-public class Calculator
-{
+public class Calculator {
     /**
      * Takes an input command of two string tokens and simulates a calculator command.
      * The token length should never be something either than 2. If it is, there is an issue in execute().
@@ -34,9 +33,10 @@ public class Calculator
      */
     protected static int calculateTwoTokens(String[] tokens) throws NumberFormatException, CalculatorException
     {
-        int a = Integer.parseInt(tokens[1]); // Throws NumberFormatException if the second token is not an int value.
-        // TODO: complete this...
+    	
     }
+    	
+      
 
     /**
      * Takes an input command of three string tokens and performs the appropriate calculator command.
@@ -66,10 +66,10 @@ public class Calculator
      * @throws NumberFormatException Thrown if the first or third token is not convertible from String to int.
      * @throws CalculatorException Thrown if the second token is not a valid command ("+", "-", or "/")
      */
-    protected static int calculateThreeTokens(String[] tokens)
-            throws ArithmeticException, NumberFormatException, CalculatorException
+    protected static int calculateThreeTokens(String[] tokens) throws ArithmeticException, NumberFormatException, CalculatorException
     {
-        // TODO: complete this...
+    	
+    		
     }
 
     /**
@@ -102,12 +102,12 @@ public class Calculator
      */
     protected static int execute(String[] tokens) throws NumberFormatException, CalculatorException
     {
+    	
         // Condition on the number of tokens (number of strings in user input separated by spaces)
         switch(tokens.length)
         {
-            // TODO: complete this...
+        
         }
-
     }
 
     /**
@@ -138,11 +138,41 @@ public class Calculator
      * (4) "Input number cannot be parsed to an int. Please try again." - a NumberFormat has been caught.
      * (5) "Calculator Exception, message is: %s", where %s is the message of a
      * CalculatorException - a CalculatorException has been caught.
+     * @throws CalculatorException 
+     * @throws NumberFormatException 
      */
-    public static String parseAndExecute(String input)
-    {
+    public static String parseAndExecute(String input){
+    	
+    	String tokens[] =  input.split(" ");
+    	int returnVal = 0;
+    	
+    	if (input.equalsIgnoreCase("quit"))
+    	{
+    		System.exit(0);
+    	}
+    	
+		try {
+			returnVal = execute(tokens);
+		} catch (NumberFormatException e)
+		{
+			return ("Input number cannot be parsed to an int. Please try again.");
+				
+		}
+		catch (CalculatorException e)
+		{	
+			return("Illegal Command");
+			
+		}
+		catch (ArithmeticException e)
+		{
+			return("Attempted to divide by 0. Please try again.");
+		}
+			
+			return ("The result is: " + returnVal);
+		}
+
         // TODO: complete this...
         // Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
         // method will catch those exceptions and respond accordingly.
     }
-}
+
