@@ -33,7 +33,20 @@ public class Calculator {
      */
     protected static int calculateTwoTokens(String[] tokens) throws NumberFormatException, CalculatorException
     {
-    	
+    	int a = Integer.parseInt(tokens[1]); 
+        String command = tokens[0]; 
+        int returnVal = 0; 
+        
+        if (command.equalsIgnoreCase("negate"))
+        {
+        	returnVal = (a * -1);
+        }
+        
+        else if (command.equalsIgnoreCase("halve"))
+        {
+        	returnVal = (a / 2); 
+        	}
+        return returnVal;
     }
     	
       
@@ -68,7 +81,30 @@ public class Calculator {
      */
     protected static int calculateThreeTokens(String[] tokens) throws ArithmeticException, NumberFormatException, CalculatorException
     {
-    	
+    	int a = Integer.parseInt(tokens[0]); 
+    	int b = Integer.parseInt(tokens[2]); 
+        String operator = tokens[1]; 
+        int returnVal = 0; 
+        
+        
+        if (operator.equals("+"))
+        {
+        	returnVal = (a + b); 
+        	return returnVal; 
+        }
+        
+        else if (operator.equals("-"))
+        {
+       	returnVal = (a - b); 
+       	return returnVal; 
+        	
+        }
+    
+        else
+        {
+       	returnVal = (a / b);
+       	return returnVal; 
+        }
     		
     }
 
